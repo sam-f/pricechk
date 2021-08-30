@@ -31,4 +31,6 @@ else # They are equal
   :white
 end
 
+puts "#{requested_crypto}/#{requested_currency}"
+
 puts pastel.send(colour, current_price)
