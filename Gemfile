@@ -10,3 +10,6 @@ gem "pastel"
 
 # Linting
 gem "standard"
+
+# Get prices from Coingecko api
+gem "coingecko_ruby"
