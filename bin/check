@@ -2,7 +2,7 @@
 # frozen_string_literal: true
 
 require "pastel"
-require_relative "../lib/price.rb"
+require_relative "../lib/price"
 
 pastel = Pastel.new
 
