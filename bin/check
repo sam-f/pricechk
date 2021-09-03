@@ -1,9 +1,9 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
-require "coingecko_ruby"
 require "pastel"
+require_relative "../lib/price.rb"
 
-client = CoingeckoRuby::Client.new
 pastel = Pastel.new
 
 if ARGV.length > 0
@@ -17,11 +17,8 @@ end
 
 requested_currency ||= "usd"
 
-historical_prices = client.daily_historical_price(requested_crypto, currency: requested_currency, days: 1)
-yesterdays_price = historical_prices["prices"].first.last
-
-current_price = client.hourly_historical_price(requested_crypto, currency: requested_currency, days: 1)
-current_price = current_price["prices"].last.last
+yesterdays_price = Price.yesterday(crypto: requested_crypto, currency: requested_currency)
+current_price = Price.current(crypto: requested_crypto, currency: requested_currency)
 
 colour = if current_price > yesterdays_price
   :green
